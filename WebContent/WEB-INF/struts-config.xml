@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+ 
+<!DOCTYPE struts-config PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN"
+          "http://jakarta.apache.org/struts/dtds/struts-config_1_2.dtd">
+ 
+<struts-config>
+
+       <form-beans>
+       <!-- Los formularios se asocian con beans: con estos -->
+       		
+       		<form-bean name="AlumnoActionForm" 
+       			  type="examen.parcial1.actionForm.AlumnoActionForm" />
+       		
+       		<form-bean name="CorteActionForm" 
+       			  type="examen.parcial1.actionForm.CorteActionForm" />
+       			  
+       		<form-bean name="RangoActionForm" 
+       			  type="examen.parcial1.actionForm.RangoActionForm" />
+       			  
+       		<form-bean name="LibroActionForm" 
+       			  type="examen.parcial1.actionForm.LibroActionForm" />
+       			  
+       </form-beans>
+ 
+       <action-mappings>
+       <!-- Las acciones de los formularios generan enrutamientos: estos mismos
+       no olvidar que referencian a un bean de los de arriba --> 
+            
+            <!-- Insertando un alumno -->
+            <action path="/addAlumno" type="examen.parcial1.action.AddAlumnoAction"                  
+	            name="AlumnoActionForm" scope="request" validate="false">                  
+	            <forward name="SUCCESS" path="/ListaAlumno.jsp" />                  
+				<forward name="ERROR" path="/error.jsp" />            
+            </action>
+            
+            <!-- Eligiendo nota de corte -->
+            <action path="/setCorte" type="examen.parcial1.action.SetNotaCorteAction"                  
+	            name="CorteActionForm" scope="request" validate="false">                  
+	            <forward name="SUCCESS" path="/ListaAlumnoCorte.jsp" />                  
+				<forward name="ERROR" path="/error.jsp" />            
+            </action>
+            
+            <!-- Eligiendo rango para el calculo de la nota media -->
+            <action path="/setRango" type="examen.parcial1.action.SetRangoEdadAction"                  
+	            name="RangoActionForm" scope="request" validate="false">                  
+	            <forward name="SUCCESS" path="/ResultadoNotaMedia.jsp" />                  
+				<forward name="ERROR" path="/error.jsp" />            
+            </action>
+            
+            <!-- Insertando un libro -->
+            <action path="/addLibro" type="examen.parcial1.action.AddLibroAction"                  
+	            name="LibroActionForm" scope="request" validate="false">                  
+	            <forward name="SUCCESS" path="/Index.jsp" />                  
+				<forward name="ERROR" path="/error.jsp" />            
+            </action>       
+       </action-mappings>
+</struts-config>
+       
